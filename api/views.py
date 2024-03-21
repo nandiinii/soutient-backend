@@ -10,7 +10,6 @@ class MetamaskUserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins
     def create(self, request, *args, **kwargs):
         metamask_id = request.data.get('metamask_id')
         date_time = request.data.get('date_time')
-
         existing_user = MetamaskUser.objects.filter(metamask_id=metamask_id).first()
         if existing_user:
             existing_user.date_time = date_time
