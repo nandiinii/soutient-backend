@@ -6,5 +6,11 @@ class MetamaskUser(models.Model):
     date_time = models.DateTimeField()
     def __str__(self):
         return self.metamask_id
+
+class Election(models.Model):
+    name=models.CharField(max_length=100)
+    start_date=models.DateTimeField()
+    end_date=models.DateTimeField()
+    
     
     
