@@ -17,7 +17,7 @@ class Election(models.Model):
     owner=models.CharField(max_length=200,blank=True,null=True)
     description=models.CharField(max_length=1000 ,blank=True,null=True)
     location=models.CharField(max_length=200,blank=True,null=True)
-    
+    is_open=models.BooleanField(default=True)
     def __str__(self):
         return self.name
     
