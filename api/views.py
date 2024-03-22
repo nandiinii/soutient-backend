@@ -1,6 +1,6 @@
 from rest_framework import generics,mixins,viewsets,status
-from .models import MetamaskUser, Election
-from .serializers import MetamaskUserSerializer, ElectionSerializer
+from .models import (MetamaskUser, Election,Vote)
+from .serializers import (MetamaskUserSerializer, ElectionSerializer,VoteSerializer)
 from rest_framework.response import Response
 # Create your views here.
 class MetamaskUserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.CreateModelMixin):
@@ -25,3 +25,13 @@ class MetamaskUserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins
 class ElectionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = ElectionSerializer
     queryset = Election.objects.all() 
+
+class VoteViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
+    serializer_class = VoteSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
