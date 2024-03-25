@@ -24,8 +24,7 @@ class Election(models.Model):
 class Vote(models.Model):
     election_foreign=models.ForeignKey(Election,on_delete=models.CASCADE)
     name=models.CharField(max_length=100)
-    user_foreign=models.ForeignKey(MetamaskUser,on_delete=models.CASCADE)
-    mete_user_key=models.CharField(max_length=100)
+    meta_user_key=models.CharField(max_length=100)
     
     def __str__(self):
         return self.name

@@ -19,9 +19,8 @@ class VoteSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         election_foreign = validated_data.get('election_foreign')
-        mete_user_key = validated_data.get('mete_user_key')
-        user_foreign = validated_data.get('user_foreign')
-        existing_vote = Vote.objects.filter(election_foreign=election_foreign, mete_user_key=mete_user_key, user_foreign=user_foreign).first()
+        meta_user_key = validated_data.get('meta_user_key')
+        existing_vote = Vote.objects.filter(election_foreign=election_foreign, meta_user_key=meta_user_key).first()
         if existing_vote:
             return existing_vote
         else:
