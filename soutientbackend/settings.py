@@ -119,12 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:5173',
-)
-CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:5173',
-]
+ALLOWED_HOSTS=['*']
+CORS_ORIGIN_ALLOW_ALL = True
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
