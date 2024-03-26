@@ -1,6 +1,6 @@
 from rest_framework import generics,mixins,viewsets,status
-from .models import (MetamaskUser, Election,Vote)
-from .serializers import (MetamaskUserSerializer, ElectionSerializer,VoteSerializer)
+from .models import (MetamaskUser, Election,Vote,CampaignDonation)
+from .serializers import (MetamaskUserSerializer, ElectionSerializer,VoteSerializer,CampaignDonationSerializer)
 from rest_framework.response import Response
 # Create your views here.
 class MetamaskUserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.CreateModelMixin):
@@ -25,6 +25,10 @@ class MetamaskUserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins
 class ElectionViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
     serializer_class = ElectionSerializer
     queryset = Election.objects.all() 
+    
+class CampaignDonationViewset(viewsets.GenericViewSet,mixins.ListModelMixin,mixins.RetrieveModelMixin,mixins.CreateModelMixin,mixins.UpdateModelMixin):
+    serializer_class=CampaignDonationSerializer
+    queryset=CampaignDonation.objects.all()
 
 class VoteViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin):
     serializer_class = VoteSerializer

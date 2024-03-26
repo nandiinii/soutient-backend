@@ -29,3 +29,13 @@ class Vote(models.Model):
     def __str__(self):
         return self.name
     
+class CampaignDonation(models.Model):
+    from_address=models.CharField(max_length=200)
+    to_address=models.CharField(max_length=200)
+    campaign_address=models.CharField(max_length=200)
+    date_time=models.DateTimeField()
+    amount=models.FloatField()
+    name=models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
