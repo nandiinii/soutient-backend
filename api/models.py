@@ -34,7 +34,7 @@ class CampaignDonation(models.Model):
     to_address=models.CharField(max_length=200)
     campaign_address=models.CharField(max_length=200)
     date_time=models.DateTimeField()
-    amount=models.FloatField()
+    amount=models.DecimalField(max_digits = 20, decimal_places = 10)
     name=models.CharField(max_length=100)
     
     def __str__(self):
