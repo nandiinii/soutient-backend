@@ -39,3 +39,26 @@ class CampaignDonation(models.Model):
     
     def __str__(self):
         return self.name
+    
+class LoanRequest(models.Model):
+    requester_metamask_id=models.CharField(max_length=200)
+    requester_name=models.CharField(max_length=100)
+    institutional_address=models.TextField(max_length=2000)
+    need=models.CharField(max_length=200)
+    grade=models.CharField(max_length=10)
+    image=models.ImageField(upload_to='student_loan_images',blank=True,null=True)
+    fund_needed=models.DecimalField(max_digits = 20, decimal_places = 10)
+    
+    def __str__(self):
+        return self.need
+    
+class LoanInterested(models.Model):
+    donator_metamask_id=models.CharField(max_length=200)
+    loan_request_foreign=models.ForeignKey(LoanRequest,on_delete=models.CASCADE)
+    needy_name=models.CharField(max_length=100)
+    needy_metamask_id=models.CharField(max_length=200)
+    datetime=models.DateTimeField()
+    
+    def __str__(self):
+        return self.needy_name
+    
