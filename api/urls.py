@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework.routers import DefaultRouter
 from .views import (MetamaskUserViewSet, ElectionViewSet,VoteViewSet,CampaignViewset,CampaignDonationViewset,LoanInterestViewset,
-                    LoanRequestViewset)
+                    LoanRequestViewset,ReviewViewset)
 
 router=DefaultRouter()
 router.register('metamask-user-detail',MetamaskUserViewSet,basename='metamask-user-detail')
@@ -12,7 +12,7 @@ router.register('campaign-donate', CampaignDonationViewset, basename='campaign-d
 router.register('loan-request', LoanRequestViewset, basename='loan-request')
 router.register('loan-interest', LoanInterestViewset, basename='loan-interest')
 router.register('campaign', CampaignViewset, basename='campaign')
-# router.register('review', ReviewViewset, basename='review')
+router.register('review', ReviewViewset, basename='review')
 urlpatterns = [
     path('',include(router.urls))
 ]
