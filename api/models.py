@@ -61,4 +61,14 @@ class LoanInterested(models.Model):
     
     def __str__(self):
         return self.needy_name
+
+class Campaign(models.Model):
+    owner=models.CharField(max_length=200)
+    title=models.CharField(max_length=200)
+    description=models.CharField(max_length=200)
+    target=models.DecimalField(max_digits = 20, decimal_places = 8)
+    deadline=models.IntegerField()
+    image_url=models.URLField()
     
+    def __str__(self):
+        return self.title

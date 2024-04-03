@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import (MetamaskUser, Election,Vote,CampaignDonation,LoanRequest,LoanInterested)
+from .models import (MetamaskUser, Election,Vote,CampaignDonation,LoanRequest,LoanInterested,Campaign)
 from django.db import models
 class MetamaskUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -44,3 +44,8 @@ class LoanInterestSerializer(serializers.ModelSerializer):
     class Meta:
         model=LoanInterested
         fields='__all__'
+        
+class CampaignSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Campaign
+        fields = '__all__'

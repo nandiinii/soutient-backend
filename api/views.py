@@ -1,7 +1,8 @@
 from rest_framework import generics,mixins,viewsets,status
-from .models import (MetamaskUser, Election,Vote,CampaignDonation,LoanInterested,LoanRequest)
-from .serializers import (MetamaskUserSerializer, ElectionSerializer,VoteSerializer,CampaignDonationSerializer,LoanInterestSerializer,LoanRequestSerializer)
+from .models import (MetamaskUser, Election,Vote,CampaignDonation,LoanInterested,LoanRequest,Campaign)
+from .serializers import (MetamaskUserSerializer, ElectionSerializer,VoteSerializer,CampaignDonationSerializer,CampaignSerializer,LoanInterestSerializer,LoanRequestSerializer)
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
 # Create your views here.
 class MetamaskUserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin, mixins.CreateModelMixin):
     serializer_class = MetamaskUserSerializer
@@ -48,3 +49,6 @@ class LoanRequestViewset(viewsets.GenericViewSet,mixins.RetrieveModelMixin,mixin
     serializer_class=LoanRequestSerializer
     queryset=LoanRequest.objects.all()
     
+class CampaignViewset(viewsets.GenericViewSet,mixins.CreateModelMixin,mixins.RetrieveModelMixin,mixins.ListModelMixin):
+    serializer_class=CampaignSerializer
+    queryset=Campaign.objects.all()
