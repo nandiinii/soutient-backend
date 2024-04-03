@@ -72,3 +72,11 @@ class Campaign(models.Model):
     
     def __str__(self):
         return self.title
+    
+# class Review(models.Model):
+#     reviewer_metamask_id = models.CharField(max_length=200)
+#     reviewer_name = models.CharField(max_length=100, blank=True, null=True, default="Anonymous")
+#     description = models.CharField(max_length=1000)
+
+#     def __str__(self):
+#         return self.reviewer_metamask_id
