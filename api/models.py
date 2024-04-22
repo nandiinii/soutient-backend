@@ -58,7 +58,7 @@ class LoanInterested(models.Model):
     needy_name=models.CharField(max_length=100)
     needy_metamask_id=models.CharField(max_length=200)
     datetime=models.DateTimeField()
-    
+    contact_email=models.EmailField()
     def __str__(self):
         return self.needy_name
 
@@ -80,3 +80,14 @@ class Review(models.Model):
 
     def __str__(self):
         return self.reviewer_name
+
+class InterestConfirmedAndContractDone(models.Model):
+    student_address=models.CharField(max_length=300)
+    loan_provider_address=models.CharField(max_length=300)
+    amount=models.DecimalField(max_digits = 20, decimal_places = 10)
+    description=models.TextField(max_length=1000)
+    created_date=models.DateTimeField()
+    proposed_date_repayment=models.DateField()
+    
+    def __str__(self):
+        return self.description

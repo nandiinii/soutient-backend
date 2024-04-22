@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import (MetamaskUser, Election,Vote,CampaignDonation,LoanRequest,LoanInterested,Campaign,Review)
+from .models import (MetamaskUser, Election,Vote,CampaignDonation,LoanRequest,LoanInterested,Campaign,Review,InterestConfirmedAndContractDone)
 from django.db import models
 class MetamaskUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -54,3 +54,9 @@ class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
         fields = '__all__'
+        
+class InterestConfirmedAndContractDoneSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=InterestConfirmedAndContractDone
+        fields='__all__'
+        
