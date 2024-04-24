@@ -59,6 +59,7 @@ class LoanInterested(models.Model):
     needy_metamask_id=models.CharField(max_length=200)
     datetime=models.DateTimeField()
     contact_email=models.EmailField()
+    message=models.CharField(max_length=2000)
     def __str__(self):
         return self.needy_name
 
